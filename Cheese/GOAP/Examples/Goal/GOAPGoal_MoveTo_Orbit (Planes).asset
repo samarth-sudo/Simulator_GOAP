@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ae6f9302b3c7b42b309fb7e78cb31c, type: 3}
+  m_Name: GOAPGoal_MoveTo_Orbit (Planes)
+  m_EditorClassIdentifier: 
+  subGoals:
+  - {fileID: 11400000, guid: 9a092219462c0874db79d10fd278013c, type: 2}
+  goalPos: {x: 0, y: 0, z: 0}
+  startingPos: {x: 0, y: 0, z: 0}
+  timeWeight: 10
+  direction: 0
+  targetSpeed: 120
+  onSpeedReward: 0.1
+  minRadius: 400
+  maxRadius: 600
+  radiusPenalty: 0.5
+  minAlt: 0
+  maxAlt: 0
+  altitudePenalty: 0

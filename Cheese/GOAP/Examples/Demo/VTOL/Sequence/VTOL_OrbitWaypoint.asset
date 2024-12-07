@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b89987cd87db0640823b0c16ca01ab8, type: 3}
+  m_Name: VTOL_OrbitWaypoint
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 583986fce97606549876d340cd8b6196, type: 2}
+  - {fileID: 11400000, guid: 43f29f5d25c5b9f45b873c8f085a82eb, type: 2}
+  - {fileID: 11400000, guid: 81d4fea2fc446b148a2e1fd24ee84ba5, type: 2}
+  - {fileID: 11400000, guid: 4ebfff6ae0adbf247ad3e43bbed95a5c, type: 2}
+  currentActionId: 1
+  seqeuenceName: Orbit waypoint
+  sequenceDescription: Orbit a waypoint at 200m radius, 30m/s

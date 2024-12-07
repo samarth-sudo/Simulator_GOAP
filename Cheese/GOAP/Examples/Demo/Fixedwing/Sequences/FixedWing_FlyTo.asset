@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b89987cd87db0640823b0c16ca01ab8, type: 3}
+  m_Name: FixedWing_FlyTo
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 583986fce97606549876d340cd8b6196, type: 2}
+  - {fileID: 11400000, guid: a55b218710ef8eb49b4f77c039162441, type: 2}
+  currentActionId: 0
+  seqeuenceName: Fly To Waypoint
+  sequenceDescription: Commands a fixed wing aircraft to fly to a waypoint. As it
+    cannot stop, it will overshoot and turn around.

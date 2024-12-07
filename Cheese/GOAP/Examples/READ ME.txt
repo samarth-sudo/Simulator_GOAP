@@ -1,0 +1,19 @@
+Hello, welcome to my example project for CAP'N (Cheese's Action Planning Navigation).
+
+CAP'N is a 3D action planning/pathfinding algorithm for AI agents in a 3D enviroment.
+This project demonstrates this using a variety of AI aicraft.
+
+SETUP NOTES
+The AI uses raycasts to detect the presence of the terrain when planning.
+Please make sure that the layers and layermasks are setup correctly,
+otherwise the agents will "see" themselves blocking their path and will be unable to genrate a path...
+The layermasks to setup are on the following components:
+
+Tutorials can be found in this playlist: https://www.youtube.com/playlist?list=PLxOQKqJEeCnq0BzLaK7wL9rF713zKLobR
+
+Thank you, and have fun developing!
+
+LINKS
+https://www.thegreatoverlordofallcheese.com/
+https://thegreatoverlordofcheese.itch.io/
+https://www.youtube.com/c/THEGREATOVERLORDOFALLCHEESE
