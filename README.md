@@ -1,4 +1,4 @@
-# CHEESE -->Simulator for GOAP(Goal Oriented Action Planning)
+# Simulator for GOAP(Goal Oriented Action Planning)
 
 This repository hosts a Unity-based simulation project that demonstrates **Goal-Oriented Action Planning (GOAP)** in action. The simulation allows users to experiment with various algorithms for decision-making and behavior planning within a dynamic environment.
 
