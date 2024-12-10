@@ -28,36 +28,107 @@ This repository hosts a Unity-based simulation project that demonstrates **Goal-
    - Choose the correct target platform (Mac or Windows) based on your system.
    - Hit "Play" to run the simulation within Unity Editor.
 
-## Experimenting with Algorithms
 
-### Approach 1: Algorithm Selection
+---
 
-1. Locate the `Scripts` folder in the Unity Project Explorer.
-2. Inside, you'll find scripts implementing different algorithms for behavior and planning:
-   - `Algorithm1.cs`: Implements a heuristic-based planning approach.
-   - `Algorithm2.cs`: Uses a probabilistic decision-making strategy.
-   - `Algorithm3.cs`: Integrates reinforcement learning concepts for planning.
-3. To try a different algorithm:
-   - Open the `AgentController` script in Unity.
-   - Swap the active algorithm by referencing the desired script in the appropriate function or variable.
-   - Save the changes and rerun the simulation to see the effects of the new algorithm.
+## Features
 
-### Approach 2: Parameter Tuning
+### Core Framework
+- **Agent Interface (`IGOAPAgent`)**:
+  Defines essential methods for agents to interact with the GOAP system, including state retrieval (`GetCurrentState`) and operational checks (`IsAlive`).
 
-1. Open the script for the chosen algorithm in Unity (e.g., `Algorithm1.cs`).
-2. Modify key parameters such as:
-   - Planning heuristics
-   - Search depth
-   - Decision thresholds
-3. Save your changes and play the simulation to observe the effects on agent behavior.
+- **Pathfinding (`GOAPPathing`)**:
+  Centralized system for generating optimal paths using GOAP principles.
 
-### Approach 3: Scenario Customization
+- **World States (`GOAPWorldState`)**:
+  Represents states in the pathfinding process, extended for vehicles and aircraft with specific parameters like position, velocity, and altitude constraints.
 
-1. Modify the Unity scene to create different scenarios for the agents to interact with:
-   - Add or remove objects in the scene.
-   - Change agent goals and priorities.
-   - Introduce obstacles to test adaptability.
-2. Save your scene and play the simulation to observe agent responses.
+- **Goals (`GOAPGoal`, `IGOAPGoal`)**:
+  Goals define the direction for agents, providing evaluation metrics (`GetValue`) and conditions for completion (`GetIsGoal`).
+
+---
+
+### Specialized Components
+#### World States
+- **Vehicle World State (`GOAPWorldState_Vehicle`)**:
+  Includes vehicle-specific data like position and velocity.
+
+- **Aircraft World State (`GOAPWorldState_SimpleAircraft`)**:
+  Adds logic for altitude limits, climb, and descent rates.
+
+#### Path Requests
+- **Vehicle Path Request (`GOAPPathRequest_Vehicle`)**:
+  Includes vehicle-specific constraints like speed and collision radius.
+
+- **Aircraft Path Request (`GOAPPathRequest_SimpleAircraft`)**:
+  Adds acceleration and altitude-related parameters for aircraft.
+
+#### Goals
+- **Movement Goals (`GOAPGoal_MoveTo`)**:
+  Direct agents to move toward target positions.
+
+- **Specialized Goals**:
+  - `GOAPGoal_FollowTerrain`: Ensures safe altitudes above terrain.
+  - `GOAPGoal_MoveTo_Orbit`: Guides agents to orbit a target.
+  - `GOAPGoal_MoveTo_Position`: Encourages smooth navigation to a position.
+
+---
+
+### Agent Controllers
+- **Base Driver (`GOAPDriver`)**:
+  Manages agent navigation and panic recovery modes.
+
+- **Aircraft-Specific Drivers**:
+  - `GOAPDriver_DemoFixedWing`: Handles fixed-wing navigation and stall recovery.
+  - `GOAPDriver_DemoHelicopter`: Manages helicopter hovering, stopping, and recovery.
+  - `GOAPDriver_DemoVtol`: Handles VTOL-specific transitions between hover and forward flight modes.
+
+---
+
+### Action System
+- **Modular Actions**:
+  Encapsulate agent behaviors such as flying to waypoints, taking off, and landing.
+
+- **Examples**:
+  - Fixed-Wing: `DemoAction_FixedWing_FlyToWaypoint`
+  - VTOL: `DemoAction_Vtol_TakeOff`, `DemoAction_Vtol_LandAtWaypoint`, and engine controls.
+
+---
+
+### Pilots
+- **`DemoFixedWingPilot`**:
+  Simulates fixed-wing dynamics with realistic controls for pitch, roll, and throttle.
+
+- **`DemoHelicopterPilot`**:
+  Controls helicopter behaviors like hovering and orbiting.
+
+- **`DemoVtolPilot`**:
+  Combines fixed-wing and helicopter behaviors for VTOL aircraft, transitioning between hover and forward flight.
+
+---
+
+### Visualization Tools
+- **Debug Tools**:
+  - `DebugGOAPVisualiser`: Visualizes paths, start points, and goals.
+  - `PathRequestVisualiser`: Displays pathfinding requests.
+  - `PlanningVisualiser`: Shows explored nodes during the planning process.
+
+---
+
+## Workflow
+1. **Initialization**:
+   - Agents request paths via their respective drivers.
+
+2. **Pathfinding**:
+   - `GOAPPathing` computes paths based on goals and world states.
+
+3. **Execution**:
+   - Drivers convert paths into commands for pilots.
+
+4. **Monitoring**:
+   - Actions and visualizers track progress and provide feedback.
+
+---
 
 ## Building and Running the Simulator
 
