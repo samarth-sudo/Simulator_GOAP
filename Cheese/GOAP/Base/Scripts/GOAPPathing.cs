@@ -9,9 +9,9 @@ namespace Cheese.GOAP
         public static GOAPPathing instance;
 
         private int searchCount; // how many states we have searched so far
-        [Tooltip("Maximum number of states to seach into the future.")]
+        [Tooltip("Maximum number of states to search into the future.")]
         public int maxSearchDepth = 100;
-        [Tooltip("Maximum number of states to seach per frame")]
+        [Tooltip("Maximum number of states to search per frame")]
         public int maxSearchesPerFrame = 10;
 
         private GOAPWorldState rootState; // the starting state we are searching from
@@ -25,14 +25,14 @@ namespace Cheese.GOAP
         [Header("Debug settings")]
         public bool drawGizmos;
 
-        [Tooltip("Draw the open states (states that we can serach)")]
+        [Tooltip("Draw the open states (states that we can search)")]
         public bool drawOpenNodes;
-        [Tooltip("Colour to draw the open states (states that we can serach)")]
+        [Tooltip("Colour to draw the open states (states that we can search)")]
         public Color openNodesColour = Color.blue;
 
-        [Tooltip("Draw the close states (states that we already serached)")]
+        [Tooltip("Draw the closed states (states that we already searched)")]
         public bool drawClosedNodes;
-        [Tooltip("Colour to draw the close states (states that we already serached)")]
+        [Tooltip("Colour to draw the closed states (states that we already searched)")]
         public Color closedNodesColour = Color.cyan;
 
         [Tooltip("Draw the best path we have found so far")]
@@ -53,7 +53,7 @@ namespace Cheese.GOAP
 
         /// <summary>
         /// Requests the GOAP algorithm to generate a path.
-        /// Make sure to check the request status to see when its comepleted.
+        /// Make sure to check the request status to see when it's completed.
         /// </summary>
         /// <param name="newRequest">Information about the path request</param>
         public void RequestPath(GOAPPathRequest newRequest)
@@ -115,7 +115,7 @@ namespace Cheese.GOAP
         {
             currentRequest.path = new List<GOAPWorldState>();
 
-            // fin the best node, and follow it backwards to find the sequences of states that lead to the best state
+            // find the best node, and follow it backwards to find the sequence of states that lead to the best state
             GOAPWorldState bestNode = GetHighestValueOpenState();
 
             while (bestNode != null)
@@ -165,10 +165,7 @@ namespace Cheese.GOAP
                         }
                         else
                         {
-                            // we have no more option to search!
-                            // we have probably run into a dead end,
-                            // and every action will result in our death...
-                            // agents should either panic or follow their old path in this situation
+                            // we have no more options to search!
                             StopGoap(GOAPRequestStatus.Failed);
                             break;
                         }
@@ -209,7 +206,7 @@ namespace Cheese.GOAP
 
         private void OnDrawGizmos()
         {
-            // gizmos don't apear to be very cheap to draw
+            // gizmos don't appear to be very cheap to draw
             // and we need a lot of them to draw all the places we've searched
             // so you can turn them all on and off individually
             if (!drawGizmos)
@@ -265,10 +262,10 @@ namespace Cheese.GOAP
         }
 
         /// <summary>
-        /// Returns all the close states (states that have been searched).
+        /// Returns all the closed states (states that have been searched).
         /// Do not use this for anything other than debugging!
         /// </summary>
-        /// <returns>the list of close states</returns>
+        /// <returns>the list of closed states</returns>
         public List<GOAPWorldState> DebugGetClosedStates()
         {
             return closedStates;
@@ -278,10 +275,36 @@ namespace Cheese.GOAP
         /// Returns all the path requests.
         /// Do not use this for anything other than debugging!
         /// </summary>
-        /// <returns>the list of path request</returns>
+        /// <returns>the list of path requests</returns>
         public List<GOAPPathRequest> DebugGetPathRequests()
         {
             return requests;
         }
+
+        // Custom Path Planning Logic (Uncomment and implement your algorithm below)
+        // =================================================================================
+        // this section and provide your custom implementation. This will override the default logic.
+        /*
+        private List<GOAPWorldState> CustomPathPlanning(GOAPPathRequest newRequest)
+        {
+            Debug.Log("Using custom path planning algorithm...");
+            
+            // Implement your custom path planning logic here.
+            // Example: A*, Dijkstra, or any custom heuristic-based algorithm.
+
+            List<GOAPWorldState> customPath = new List<GOAPWorldState>();
+            // Populate 'customPath' with states leading to the goal.
+            
+            return customPath;
+        }
+
+        private bool ValidateCustomPath(List<GOAPWorldState> path)
+        {
+            // Validate the path returned by your custom algorithm.
+            return path != null && path.Count > 0;
+        }
+        */
+        // =================================================================================
     }
 }
+
