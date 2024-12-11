@@ -2,6 +2,7 @@
 
 This repository hosts a Unity-based simulation project that demonstrates **Goal-Oriented Action Planning (GOAP)** in action. The simulation allows users to experiment with various algorithms for decision-making and behavior planning within a dynamic environment.
 
+Tutorial video  : https://drive.google.com/drive/folders/1ouXIhtLaKA3-s3y-6_myBAOuxiwWKBZG?usp=sharing
 ## Getting Started
 
 ### Requirements
@@ -153,6 +154,6 @@ To maximize your exploration of the simulator:
 This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the software with proper attribution.
 
 ---
-
+For Further Querries contact email at  samarths@bu.edu
 Enjoy exploring the possibilities of Goal-Oriented Action Planning with **Simulator_GOAP**!
 
